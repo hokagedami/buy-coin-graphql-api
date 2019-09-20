@@ -1,0 +1,9 @@
+type Query {
+    calculatePrice(type: Type!, margin: Float!, nairaUsdExchangeRate: Float!): Float
+}
+
+
+enum Type {
+    sell
+    buy
+}
