@@ -3,7 +3,7 @@ const getBtcUsdRate = require('./btc-usd-rate');
 
 
 
-module.exports = resolverFunction = async (type, margin, nairaUsdExchangeRate) => {
+module.exports = resolverFunction = async (type, margin, exchangeRate) => {
     const usdRate = await getBtcUsdRate();
     const marginValue = margin * 0.01 * usdRate;
     let rate = null;
@@ -17,5 +17,5 @@ module.exports = resolverFunction = async (type, margin, nairaUsdExchangeRate) =
         default:
             throw new Error(`invalid argument, type expected to be 'buy' or 'sell'`);
     }
-    return parseFloat((nairaUsdExchangeRate * rate).toFixed(4));
+    return parseFloat((exchangeRate * rate).toFixed(4));
 };

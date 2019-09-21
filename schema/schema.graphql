@@ -1,5 +1,5 @@
 type Query {
-    calculatePrice(type: Type!, margin: Float!, nairaUsdExchangeRate: Float!): Float
+    calculatePrice(type: Type!, margin: Float!, exchangeRate: Float!): Float
 }
 
 
