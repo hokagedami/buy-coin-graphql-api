@@ -1,18 +1,19 @@
 const getBtcUsdRate = require('./btc-usd-rate');
+const marginValue = require('./margin-value');
 
 
 
 
 module.exports = resolverFunction = async (type, margin, exchangeRate) => {
-    const usdRate = await getBtcUsdRate();
-    const marginValue = margin * 0.01 * usdRate;
-    let rate = null;
+    let usdRate = null, rate = null;
     switch (type) {
         case 'sell':
-            rate = usdRate - marginValue;
+            usdRate = await getBtcUsdRate();
+            rate = usdRate - marginValue(margin, usdRate);
             break;
         case 'buy':
-            rate = usdRate + marginValue;
+            usdRate = await getBtcUsdRate();
+            rate = usdRate + marginValue(margin, usdRate);
             break;
         default:
             throw new Error(`invalid argument, type expected to be 'buy' or 'sell'`);
