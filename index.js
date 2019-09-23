@@ -16,5 +16,4 @@ const options = {
     endpoint: '/graphql',
     playground: '/playground',
 };
-server.start(options, ({ port }) => console.log(''))
-    .then(res => console.log(`Server is running on port ${port}`));
+server.start(options, ({ port }) => console.log(`Server is running on port ${port}`));
