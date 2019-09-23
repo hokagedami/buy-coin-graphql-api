@@ -14,6 +14,6 @@ const port = process.env.PORT || 4000;
 const options = {
     port,
     endpoint: '/graphql',
-    playground: '/playground',
+    playground: '/graphiql',
 };
 server.start(options, ({ port }) => console.log(`Server is running on port ${port}`));
